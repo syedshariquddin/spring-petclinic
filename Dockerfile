@@ -4,6 +4,7 @@ WORKDIR /app
 RUN mvn package
 
 FROM eclipse-temurin:25-noble AS runtime
-COPY --from=build /app/target/*.jar java.jar
+COPY --from=build /app/target/*.jar addy.jar
+WORKDIR /myjava
 EXPOSE 8080
-CMD["java","-jar","java.jar"]
+CMD ["java","-jar","addy.jar"]
